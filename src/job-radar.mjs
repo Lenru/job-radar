@@ -223,7 +223,7 @@ ${list}
 POSTINGS`;
 
   try {
-    const res = spawnSync("claude", ["-p", "--allowedTools", ""], {
+    const res = spawnSync("claude", ["-p", "--tools", "", "--strict-mcp-config"], {
       input: prompt,
       encoding: "utf8",
       timeout: 180000,
