@@ -31,6 +31,15 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
+// Every `claude -p` this script spawns must run on Noah's SUBSCRIPTION, not on the
+// API. The runner starts it with `node --env-file=.env.local`, which loads
+// ANTHROPIC_API_KEY (the hub's Ask needs it, nothing here does), and a spawned
+// claude.exe inherits it and bills the API: $2 to $4 per headless session. That is
+// what emptied the $5 API limit on 2026-09-25. Deleting it here covers every spawn.
+delete process.env.ANTHROPIC_API_KEY;
+// Headless: skip Noah's CLAUDE.md files (rules for live chats, ~44k tokens a call). Auth, MCP, tools unaffected.
+process.env.CLAUDE_CODE_DISABLE_CLAUDE_MDS = "1";
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = join(__dirname, "out");
 const STATE_FILE = join(OUT_DIR, "job-radar-state.json");
