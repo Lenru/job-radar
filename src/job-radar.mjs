@@ -50,7 +50,7 @@ const NO_LLM = process.argv.includes("--no-llm");
 // ── Profile + filters (EDIT THESE) ───────────────────────────────────────────
 // This is what the scorer judges every posting against. Tighten or loosen the
 // filters freely — they're injected straight into the scoring prompt.
-const PROFILE = `Noah Watson — founder of Watson's Media, a solo AI + creative studio. He BUILDS and ships autonomous AI systems end to end by orchestrating Claude Code: an AI ops dashboard with an autonomous "brain" loop and human review queue, multi-brand social content pipelines, LinkedIn automation, agent/workflow orchestration. Credentials: 5 Anthropic + 7 Google certifications, no traditional 4-year degree (trade-school background), portfolio-first. Strengths: AI automation, agent/workflow design, prompt engineering, content systems, brand/creative + AI hybrid, shipping fast solo.`;
+const PROFILE = `Noah Watson — a startup CTO and founder of Watson's Media, a solo AI studio. He BUILDS and ships AI systems end to end by orchestrating Claude Code: a live multi-client portal (Next.js, Supabase, database-enforced permissions), cloud publishing on GitHub Actions, a gated outreach/sales pipeline, 15+ scheduled agents with monitoring. Client-facing: won and kept a retainer client, delivered on-site AI training. Credentials: Anthropic + Google AI certificates, no 4-year degree (diesel trade-school background), currently learning CS fundamentals (CS50). Strengths: forward-deployed / implementation work, agent design, explaining tech to non-technical people.`;
 
 const FILTERS = {
   location: "remote (US-based or global-remote ok)",
@@ -59,7 +59,7 @@ const FILTERS = {
 };
 
 // Target role families — used to build searches and steer scoring.
-const TARGETS = "AI automation engineer, AI implementation / solutions engineer, applied AI, forward-deployed engineer, automation specialist, AI content/ops, AI consultant, agent engineer, prompt engineer, AI-marketing hybrid";
+const TARGETS = "forward-deployed engineer, AI implementation / solutions engineer, AI automation engineer, applied AI, technical support engineer at an AI company, associate / junior AI engineer, agent engineer, AI consultant, automation specialist";
 
 // ── Config ───────────────────────────────────────────────────────────────────
 const SCORE_THRESHOLD = 6;   // 1-10 bar a posting must clear to ping
@@ -68,7 +68,7 @@ const MAX_AGE_DAYS = 30;     // ignore postings older than this
 
 // Remotive: free JSON API, one call per search term.
 const remotive = (q) => `https://remotive.com/api/remote-jobs?search=${encodeURIComponent(q)}&limit=40`;
-const SEARCHES = ["AI", "automation", "machine learning", "prompt engineer", "AI engineer"];
+const SEARCHES = ["AI", "automation", "machine learning", "prompt engineer", "AI engineer", "forward deployed", "solutions engineer"];
 
 // We Work Remotely RSS (parsed by the shared RSS parser below).
 const WWR_FEEDS = [
