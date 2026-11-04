@@ -1,0 +1,13 @@
+{
+  "name": "job-radar",
+  "version": "1.0.0",
+  "description": "Pulls remote AI job postings from public boards, scores each for fit against a written profile with Claude, and prints the matches.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=20.12" },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node src/job-radar.mjs --dry-run --no-llm",
+    "radar": "node src/job-radar.mjs"
+  }
+}
